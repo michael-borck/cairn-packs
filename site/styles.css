@@ -194,6 +194,24 @@ h1 {
   background: #e4c36d;
 }
 
+.button.disabled {
+  border-color: var(--line);
+  background: var(--line);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.pack-card.revoked {
+  border-color: rgb(226 125 111 / 45%);
+}
+
+.revoked-note {
+  margin: 0;
+  color: var(--danger);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .ghost-button {
   border: 1px solid var(--line);
   color: var(--text);
