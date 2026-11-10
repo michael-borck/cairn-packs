@@ -2,6 +2,8 @@
 
 Static catalog and submission queue for [Cairn](https://github.com/michael-borck/cairn) content packs.
 
+Catalog site: https://michael-borck.github.io/cairn-packs/
+
 No backend. `catalog/index.json` and the `.learnpack` artifacts are served as static files. The Cairn app fetches the catalog, downloads a pack, verifies its hash, and installs it into the local library.
 
 A merged submission is **not** live immediately. The maintainer reviews it, rebuilds the catalog, and deploys the catalog separately.
