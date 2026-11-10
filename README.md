@@ -40,6 +40,12 @@ node scripts/build-packs.mjs ../cairn/content-packs
 
 The script writes `packs/<id>/<version>.learnpack`, `catalog/index.json`, and `catalog/packs/<id>.json`. It requires `zip` on the maintainer machine. The build is intentionally local; the private review and signing step stays outside CI.
 
+Artifact URLs are absolute and use `https://michael-borck.github.io/cairn-packs/` by default. Override the base for another host:
+
+```bash
+CAIRN_PACKS_BASE_URL=https://packs.example.com/ node scripts/build-packs.mjs ../cairn/content-packs
+```
+
 ## Site
 
 `site/` is a static catalog browser. The deploy workflow copies `site/`, `catalog/`, and `packs/` into the Pages artifact.

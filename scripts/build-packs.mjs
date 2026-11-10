@@ -25,6 +25,10 @@ const source = resolve(
 );
 const packsRoot = join(repoRoot, "packs");
 const catalogRoot = join(repoRoot, "catalog");
+const baseUrl = (
+  process.env.CAIRN_PACKS_BASE_URL ??
+  "https://michael-borck.github.io/cairn-packs/"
+).replace(/\/?$/, "/");
 
 async function readJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
@@ -84,7 +88,10 @@ async function buildPack(directory) {
       skills: curriculum.skills?.length ?? 0,
       items: items.length,
       labs: labs.length,
-      url: `packs/${manifest.id}/${manifest.version}.learnpack`,
+      url: new URL(
+        `packs/${manifest.id}/${manifest.version}.learnpack`,
+        baseUrl
+      ).toString(),
       sha256,
       trust: "official",
       tags,

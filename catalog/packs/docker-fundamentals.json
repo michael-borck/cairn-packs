@@ -12,8 +12,8 @@
   "skills": 9,
   "items": 37,
   "labs": 5,
-  "url": "packs/docker-fundamentals/0.1.0.learnpack",
-  "sha256": "29ea2f3c565613311520a846fdb67a281dd1c6752375d54c71f7578efcca167a",
+  "url": "https://michael-borck.github.io/cairn-packs/packs/docker-fundamentals/0.1.0.learnpack",
+  "sha256": "cecba0813b1aaa2124c4ceb1fe4fb7c6bed9d9d2726bbfad7127e81e6f63476f",
   "trust": "official",
   "tags": [
     "build",
@@ -25,5 +25,5 @@
     "networking",
     "storage"
   ],
-  "updatedAt": "2026-11-10T05:48:28.688Z"
+  "updatedAt": "2026-11-10T10:52:43.263Z"
 }

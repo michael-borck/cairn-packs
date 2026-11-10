@@ -64,9 +64,26 @@ for (const entry of catalogPacks) {
   }
 
   if (typeof entry?.url !== "string" || !entry.url) continue;
-  const artifactPath = resolve(repoRoot, entry.url);
+  const expectedPath = `packs/${entry.id}/${entry.version}.learnpack`;
+  let artifactPath;
+  if (/^https?:\/\//i.test(entry.url)) {
+    try {
+      const pathname = new URL(entry.url).pathname;
+      if (!pathname.endsWith(`/${expectedPath}`)) {
+        fail(`${label}: url must end with ${expectedPath}`);
+      }
+    } catch {
+      fail(`${label}: url must be a valid absolute URL`);
+    }
+    artifactPath = resolve(repoRoot, expectedPath);
+  } else {
+    if (entry.url !== expectedPath) {
+      fail(`${label}: url must be ${expectedPath}`);
+    }
+    artifactPath = resolve(repoRoot, expectedPath);
+  }
   if (!existsSync(artifactPath)) {
-    fail(`${label}: missing artifact ${entry.url}`);
+    fail(`${label}: missing artifact ${expectedPath}`);
     continue;
   }
 
