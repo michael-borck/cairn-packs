@@ -8,7 +8,7 @@ Thanks for contributing. Keep submissions small, complete, and reviewable.
 - Run `cairn validate <pack-dir> --strict` and fix every error and warning you can.
 - Confirm the pack has a licence, source, changelog, and no content you do not have the right to redistribute.
 - Confirm labs are learner-run text and the pack contains no executable content or free-form system prompts.
-- Export a `.learnpack` and do not edit the archive afterwards.
+- Use Cairn's **Export .learnpack** action and do not edit the archive afterwards.
 
 ## Submission layout
 
