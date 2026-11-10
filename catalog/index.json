@@ -1,0 +1,62 @@
+{
+  "format": "cairn-catalog",
+  "version": 1,
+  "generated": "2026-11-10T05:48:28.775Z",
+  "packs": [
+    {
+      "id": "docker-fundamentals",
+      "title": "Docker Fundamentals",
+      "version": "0.1.0",
+      "description": "A hands-on introduction to containers, images, ports, volumes, networks, Dockerfiles, Compose, and troubleshooting.",
+      "author": "Cairn",
+      "licence": "CC-BY-4.0",
+      "level": "beginner",
+      "audience": "adult-self-learner",
+      "estimatedMinutes": 240,
+      "skills": 9,
+      "items": 37,
+      "labs": 5,
+      "url": "packs/docker-fundamentals/0.1.0.learnpack",
+      "sha256": "29ea2f3c565613311520a846fdb67a281dd1c6752375d54c71f7578efcca167a",
+      "trust": "official",
+      "tags": [
+        "build",
+        "compose",
+        "containers",
+        "debugging",
+        "docker",
+        "images",
+        "networking",
+        "storage"
+      ],
+      "updatedAt": "2026-11-10T05:48:28.688Z"
+    },
+    {
+      "id": "git-github-fundamentals",
+      "title": "Git & GitHub Fundamentals",
+      "version": "0.1.0",
+      "description": "A hands-on introduction to commits, branches, merges, conflicts, remotes, pull requests, ignores, and recovery.",
+      "author": "Cairn",
+      "licence": "CC-BY-4.0",
+      "level": "beginner",
+      "audience": "adult-self-learner",
+      "estimatedMinutes": 240,
+      "skills": 10,
+      "items": 43,
+      "labs": 7,
+      "url": "packs/git-github-fundamentals/0.1.0.learnpack",
+      "sha256": "e31535cb95059da34d78b29dec3ec1e81396575dabeb2ef7e31cc915b069b25b",
+      "trust": "official",
+      "tags": [
+        "branching",
+        "collaboration",
+        "foundations",
+        "git",
+        "github",
+        "hygiene",
+        "recovery"
+      ],
+      "updatedAt": "2026-11-10T05:48:28.747Z"
+    }
+  ]
+}

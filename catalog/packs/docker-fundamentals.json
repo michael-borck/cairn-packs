@@ -1,0 +1,29 @@
+{
+  "format": "cairn-catalog-pack",
+  "id": "docker-fundamentals",
+  "title": "Docker Fundamentals",
+  "version": "0.1.0",
+  "description": "A hands-on introduction to containers, images, ports, volumes, networks, Dockerfiles, Compose, and troubleshooting.",
+  "author": "Cairn",
+  "licence": "CC-BY-4.0",
+  "level": "beginner",
+  "audience": "adult-self-learner",
+  "estimatedMinutes": 240,
+  "skills": 9,
+  "items": 37,
+  "labs": 5,
+  "url": "packs/docker-fundamentals/0.1.0.learnpack",
+  "sha256": "29ea2f3c565613311520a846fdb67a281dd1c6752375d54c71f7578efcca167a",
+  "trust": "official",
+  "tags": [
+    "build",
+    "compose",
+    "containers",
+    "debugging",
+    "docker",
+    "images",
+    "networking",
+    "storage"
+  ],
+  "updatedAt": "2026-11-10T05:48:28.688Z"
+}

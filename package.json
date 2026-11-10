@@ -1,0 +1,12 @@
+{
+  "name": "cairn-packs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Static catalog and submission queue for Cairn content packs.",
+  "scripts": {
+    "build": "node scripts/build-packs.mjs",
+    "verify": "node scripts/verify-catalog.mjs",
+    "validate": "node scripts/validate-submission.mjs"
+  }
+}

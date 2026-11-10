@@ -1,0 +1,15 @@
+{
+  "packId": "your-pack-id",
+  "title": "Your Pack",
+  "author": "Your Name",
+  "contact": "you@example.com",
+  "licence": "CC-BY-4.0",
+  "licenceConfirmed": true,
+  "version": "0.1.0",
+  "description": "One or two sentences about the pack.",
+  "changes": "Initial submission.",
+  "status": "submitted",
+  "trust": "community",
+  "packFile": "pack.learnpack",
+  "cairnValidation": "cairn validate <pack-dir> --strict passed"
+}

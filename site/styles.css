@@ -1,0 +1,261 @@
+:root {
+  color-scheme: dark;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #ece9e0;
+  background: #141413;
+  --bg: #141413;
+  --panel: #1d1d1b;
+  --panel-2: #242421;
+  --line: #3a3a35;
+  --text: #ece9e0;
+  --muted: #a5a196;
+  --accent: #d8b45a;
+  --accent-2: #7fb7a3;
+  --good: #8fbf8b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgb(216 180 90 / 9%), transparent 34rem),
+    var(--bg);
+}
+
+a {
+  color: inherit;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+  background: rgb(20 20 19 / 82%);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.mark {
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.ghost {
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.ghost:hover {
+  color: var(--accent);
+}
+
+main {
+  width: min(1080px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 64px 0 80px;
+}
+
+.hero {
+  max-width: 720px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent-2);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.status {
+  margin: 22px 0 0;
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.pack-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+}
+
+.pack-card h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.pack-meta {
+  color: var(--accent-2);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.pack-description {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.button,
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.button {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #211d12;
+  font-weight: 700;
+}
+
+.button:hover {
+  background: #e4c36d;
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.ghost-button:hover {
+  border-color: var(--accent);
+}
+
+.hash {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  margin-top: 56px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgb(127 183 163 / 5%);
+}
+
+.note h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.note p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+code {
+  color: var(--accent-2);
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 620px) {
+  main {
+    padding-top: 44px;
+  }
+
+  .topbar,
+  footer {
+    padding-inline: 16px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

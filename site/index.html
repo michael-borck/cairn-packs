@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cairn packs</title>
+    <meta
+      name="description"
+      content="Official and reviewed content packs for Cairn, the local-first adaptive learning workbench."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="https://cairn.borck.education">
+        <span class="mark">✦</span>
+        <span>Cairn <span class="muted">packs</span></span>
+      </a>
+      <a class="ghost" href="https://github.com/michael-borck/cairn">Cairn app</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Static catalog</p>
+        <h1>Packs for Cairn</h1>
+        <p class="lede">
+          Download a pack, import it into Cairn, and keep learning offline.
+          The catalog is discovery. Your local library is the source of truth.
+        </p>
+        <p id="status" class="status">Loading catalog...</p>
+      </section>
+
+      <section id="packs" class="pack-grid" aria-live="polite"></section>
+
+      <section class="note">
+        <h2>How it works</h2>
+        <p>
+          Packs are versioned <code>.learnpack</code> archives. Cairn verifies
+          the hash, copies the pack into the local library, and keeps learner
+          data on the device.
+        </p>
+        <p>
+          No accounts. No learner data is sent to this catalog. Submissions are
+          reviewed through pull requests.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>Cairn packs</span>
+      <span class="muted">Local-first learning, portable content.</span>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
