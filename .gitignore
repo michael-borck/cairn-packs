@@ -3,3 +3,6 @@
 node_modules/
 .tmp/
 _site/
+
+keys/*.pem
+!keys/cairn-packs-public.pem

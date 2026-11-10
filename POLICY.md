@@ -38,4 +38,4 @@ No free-text reviews and no leaderboard. Start with curated featured packs, cate
 
 ## Removal
 
-A maintainer can remove a pack for licence, safety, accuracy, or integrity reasons. Removed packs stay in learner local libraries until the learner removes them. The catalog records the removal reason and replacement version when possible.
+A maintainer can revoke a pack for licence, safety, accuracy, or integrity reasons. Revoked versions stay in learner local libraries until the learner removes them, but the app refuses new installs and marks them in the catalog. The catalog records the reason and replacement version when possible.

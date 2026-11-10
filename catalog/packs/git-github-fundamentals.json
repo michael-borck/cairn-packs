@@ -13,7 +13,8 @@
   "items": 43,
   "labs": 7,
   "url": "https://michael-borck.github.io/cairn-packs/packs/git-github-fundamentals/0.1.0.learnpack",
-  "sha256": "1a07649c60b74190d27948e2d27953f61ba15248037cc21f6f6ca761a4819b1f",
+  "sha256": "defc530145556576aff0d02d180a32d81e4c0a6611255e77a4b874a984976e4f",
+  "signature": "Yef7tHLXZrhVmaYzcpMBPhR5VynImvaLcWIYwiRj+xHyAM5Tko8svWxDR5DWbIS9phFu4ocmWVEnj1vFpaotDQ==",
   "trust": "official",
   "tags": [
     "branching",
@@ -24,5 +25,5 @@
     "hygiene",
     "recovery"
   ],
-  "updatedAt": "2026-11-10T10:52:43.305Z"
+  "updatedAt": "2026-11-10T23:00:00.450Z"
 }

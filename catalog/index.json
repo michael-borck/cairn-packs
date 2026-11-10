@@ -1,7 +1,10 @@
 {
   "format": "cairn-catalog",
   "version": 1,
-  "generated": "2026-11-10T10:52:43.327Z",
+  "signatureAlgorithm": "ed25519",
+  "publicKey": "auHW8t8qc/0I71xd4P9r42kQItG6j35e/P3YTPm1f+k=",
+  "generated": "2026-11-10T23:00:00.472Z",
+  "revoked": [],
   "packs": [
     {
       "id": "docker-fundamentals",
@@ -17,7 +20,8 @@
       "items": 37,
       "labs": 5,
       "url": "https://michael-borck.github.io/cairn-packs/packs/docker-fundamentals/0.1.0.learnpack",
-      "sha256": "cecba0813b1aaa2124c4ceb1fe4fb7c6bed9d9d2726bbfad7127e81e6f63476f",
+      "sha256": "8360b0e361a6368bfa760a0ca7ed513db231a55fbf0e0e49bc5d694f0daed2ae",
+      "signature": "guiHA4HEgSI03q7Bo4+iJBBsvg7I/ABtFFEJ3yuX3YjKrxbvwlVK8iZTn1sVl5xrsfmkO3bG4QejmXBYGWI0CA==",
       "trust": "official",
       "tags": [
         "build",
@@ -29,7 +33,7 @@
         "networking",
         "storage"
       ],
-      "updatedAt": "2026-11-10T10:52:43.263Z"
+      "updatedAt": "2026-11-10T23:00:00.411Z"
     },
     {
       "id": "git-github-fundamentals",
@@ -45,7 +49,8 @@
       "items": 43,
       "labs": 7,
       "url": "https://michael-borck.github.io/cairn-packs/packs/git-github-fundamentals/0.1.0.learnpack",
-      "sha256": "1a07649c60b74190d27948e2d27953f61ba15248037cc21f6f6ca761a4819b1f",
+      "sha256": "defc530145556576aff0d02d180a32d81e4c0a6611255e77a4b874a984976e4f",
+      "signature": "Yef7tHLXZrhVmaYzcpMBPhR5VynImvaLcWIYwiRj+xHyAM5Tko8svWxDR5DWbIS9phFu4ocmWVEnj1vFpaotDQ==",
       "trust": "official",
       "tags": [
         "branching",
@@ -56,7 +61,7 @@
         "hygiene",
         "recovery"
       ],
-      "updatedAt": "2026-11-10T10:52:43.305Z"
+      "updatedAt": "2026-11-10T23:00:00.450Z"
     }
   ]
 }

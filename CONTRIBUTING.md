@@ -32,7 +32,7 @@ CI runs the same script. A pull request with a failing validation is not reviewe
 
 ## Review
 
-A maintainer checks the pack against [POLICY.md](POLICY.md). A merged PR is not live until the catalog is rebuilt and deployed.
+A maintainer checks the pack against [POLICY.md](POLICY.md), rebuilds the signed catalog, and deploys it. A merged PR is not live until that deploy completes.
 
 ## Corrections
 
