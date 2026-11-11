@@ -40,7 +40,7 @@ async function readJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
 }
 
-async function buildPack(directory, signingKey) {
+async function buildPack(directory, signingKey, keyId) {
   const manifest = await readJson(join(directory, "manifest.json"));
   if (!manifest?.id || !manifest?.version) {
     throw new Error(`${directory}: manifest needs id and version`);
@@ -101,6 +101,7 @@ async function buildPack(directory, signingKey) {
       ).toString(),
       sha256,
       signature,
+      keyId,
       trust: "official",
       tags,
       updatedAt: new Date().toISOString(),
@@ -125,6 +126,10 @@ async function main() {
     type: "spki",
   });
   const publicKey = publicKeyBytes.subarray(-32).toString("base64");
+  const keyId = createHash("sha256")
+    .update(Buffer.from(publicKey, "base64"))
+    .digest("hex")
+    .slice(0, 16);
 
   try {
     const pem = await readFile(publicKeyPath, "utf8");
@@ -184,7 +189,7 @@ async function main() {
     } catch {
       continue;
     }
-    const pack = await buildPack(directory, signingKey);
+    const pack = await buildPack(directory, signingKey, keyId);
     packs.push(pack);
     console.log(`Built and signed ${pack.id}@${pack.version}`);
   }
@@ -195,6 +200,24 @@ async function main() {
     await writeFile(
       join(catalogRoot, "packs", `${pack.id}.json`),
       JSON.stringify({ format: "cairn-catalog-pack", ...pack }, null, 2) + "\n"
+    );
+  }
+
+  for (const entry of preserved) {
+    if (packs.some((official) => official.id === entry.id)) continue;
+    const artifactPath = join(
+      repoRoot,
+      "packs",
+      entry.id,
+      `${entry.version}.learnpack`
+    );
+    const bytes = await readFile(artifactPath);
+    entry.sha256 = createHash("sha256").update(bytes).digest("hex");
+    entry.signature = sign(null, bytes, signingKey).toString("base64");
+    entry.keyId = keyId;
+    await writeFile(
+      join(catalogRoot, "packs", `${entry.id}.json`),
+      JSON.stringify({ format: "cairn-catalog-pack", ...entry }, null, 2) + "\n"
     );
   }
 
@@ -210,6 +233,7 @@ async function main() {
     version: 1,
     signatureAlgorithm: "ed25519",
     publicKey,
+    keyId,
     generated: new Date().toISOString(),
     revoked: revocations.revoked,
     packs: allPacks,

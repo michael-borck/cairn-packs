@@ -11,6 +11,7 @@ const repoRoot = resolve(here, "..");
 const submissionsRoot = join(repoRoot, "submissions");
 const errors = [];
 const ids = new Set();
+let reviewed = 0;
 
 function fail(message) {
   errors.push(message);
@@ -92,6 +93,41 @@ for (const item of readdirSync(submissionsRoot, { withFileTypes: true })) {
   if (manifest.license !== submission.licence) {
     fail(`${label}: manifest licence ${manifest.license} does not match submission`);
   }
+
+  const reviewPath = join(directory, "review.json");
+  if (existsSync(reviewPath)) {
+    let review;
+    try {
+      review = JSON.parse(readFileSync(reviewPath, "utf8"));
+    } catch (error) {
+      fail(`${label}: review.json is invalid JSON (${error.message})`);
+      continue;
+    }
+    if (review.packId !== submission.packId) {
+      fail(`${label}: review packId does not match submission`);
+    }
+    if (review.version !== submission.version) {
+      fail(`${label}: review version does not match submission`);
+    }
+    if (
+      !["approved", "changes-requested", "rejected"].includes(review.status)
+    ) {
+      fail(`${label}: review status is invalid`);
+    }
+    if (typeof review.reviewer !== "string" || !review.reviewer.trim()) {
+      fail(`${label}: review reviewer is required`);
+    }
+    if (
+      typeof review.reviewedAt !== "string" ||
+      Number.isNaN(Date.parse(review.reviewedAt))
+    ) {
+      fail(`${label}: review reviewedAt must be an ISO date`);
+    }
+    if (typeof review.notes !== "string") {
+      fail(`${label}: review notes must be a string`);
+    }
+    reviewed += 1;
+  }
 }
 
 if (errors.length > 0) {
@@ -99,4 +135,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`✓ ${ids.size} submission(s) valid`);
+console.log(`✓ ${ids.size} submission(s) valid (${reviewed} reviewed)`);

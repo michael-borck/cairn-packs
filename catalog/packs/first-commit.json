@@ -15,10 +15,13 @@
   "url": "https://michael-borck.github.io/cairn-packs/packs/first-commit/0.1.0.learnpack",
   "sha256": "255b3dacfb44541e3d4a58f6ec0cfaaba3ee5808cc0cc04cf308fc7a45c64f09",
   "signature": "6xio0k7c5DzsgeA8CgQR/cwURuHs7MNZxDZvErTX9ya2IqlIrLtb5mUz+FGfpEW5V0B4VrEuoFlHz9BBeOjKBQ==",
+  "keyId": "5e971c213e4eeb87",
   "trust": "reviewed",
   "tags": [
     "commits",
     "git"
   ],
-  "updatedAt": "2026-11-11T02:19:09.478Z"
+  "updatedAt": "2026-11-11T13:38:23.222Z",
+  "reviewedAt": "2026-11-11T13:38:22.648Z",
+  "reviewedBy": "Cairn maintainers"
 }

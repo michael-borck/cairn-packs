@@ -70,7 +70,7 @@ CI runs the same command. It checks:
 
 ## Signing
 
-The catalog stores a raw 32-byte Ed25519 public key and one signature per artifact. The private key lives in `keys/cairn-packs-private.pem`, which is ignored by git. See [keys/README.md](keys/README.md).
+The catalog stores a raw 32-byte Ed25519 public key, a short `keyId` fingerprint, and one signature per artifact. The private key lives in `keys/cairn-packs-private.pem`, which is ignored by git. See [keys/README.md](keys/README.md) for rotation.
 
 The app verifies the signature before unpacking a downloaded pack.
 
@@ -106,16 +106,24 @@ A revocation with no `version` applies to every version of that pack ID. The app
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [POLICY.md](POLICY.md). The `first-commit` submission is a worked example.
 
-## Approving a submission
+## Reviewing and approving a submission
 
-After review, sign the artifact and add it to the catalog:
+After review, record the decision:
+
+```bash
+npm run review -- first-commit --approve --notes "Content and licence checked."
+```
+
+Then sign and add it to the catalog:
 
 ```bash
 npm run approve -- first-commit
 npm run verify
 ```
 
-The approval script copies the artifact to `packs/`, signs it, and updates `catalog/index.json` and `catalog/packs/<id>.json` with `trust: "reviewed"`. Commit the artifact and catalog together. A later `npm run build` rebuilds official packs and preserves reviewed entries.
+Only an approved review can be signed. The approval script copies the artifact to `packs/`, signs it, and updates `catalog/index.json` and `catalog/packs/<id>.json` with `trust: "reviewed"`. Commit the review record, artifact, and catalog together. A later `npm run build` rebuilds official packs, re-signs reviewed entries with the current key, and preserves them.
+
+See [REVIEWING.md](REVIEWING.md).
 
 ## Trust tiers
 

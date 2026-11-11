@@ -43,6 +43,7 @@ if (!Array.isArray(catalog.revoked)) {
 }
 
 let publicKey;
+let keyId;
 if (typeof catalog.publicKey !== "string" || !catalog.publicKey) {
   fail("catalog.publicKey is required");
 } else {
@@ -55,6 +56,13 @@ if (typeof catalog.publicKey !== "string" || !catalog.publicKey) {
       raw,
     ]);
     publicKey = createPublicKey({ key: spki, format: "der", type: "spki" });
+    keyId = createHash("sha256")
+      .update(raw)
+      .digest("hex")
+      .slice(0, 16);
+    if (catalog.keyId !== keyId) {
+      fail("catalog.keyId does not match the public key");
+    }
   }
 }
 
@@ -73,6 +81,7 @@ for (const entry of catalogPacks) {
     "audience",
     "url",
     "sha256",
+    "keyId",
     "trust",
   ]) {
     if (typeof entry?.[field] !== "string" || !entry[field].trim()) {
@@ -83,6 +92,9 @@ for (const entry of catalogPacks) {
   if (typeof entry?.id === "string") {
     if (ids.has(entry.id)) fail(`${label}: duplicate pack id`);
     ids.add(entry.id);
+  }
+  if (entry.keyId && keyId && entry.keyId !== keyId) {
+    fail(`${label}: keyId does not match the catalog key`);
   }
 
   if (typeof entry?.url !== "string" || !entry.url) continue;
@@ -166,6 +178,9 @@ for (const entry of catalogPacks) {
       }
       if (detail.signature !== entry.signature) {
         fail(`${label}: detail signature does not match catalog`);
+      }
+      if (detail.keyId !== entry.keyId) {
+        fail(`${label}: detail keyId does not match catalog`);
       }
     } catch (error) {
       fail(`${label}: detail JSON is invalid (${error.message})`);

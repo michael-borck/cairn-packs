@@ -38,6 +38,19 @@ if (!existsSync(submissionPath)) {
   process.exit(1);
 }
 
+const reviewPath = join(submissionDir, "review.json");
+if (!existsSync(reviewPath)) {
+  console.error(
+    `✗ No review record. Run npm run review -- ${packId} --approve first.`
+  );
+  process.exit(1);
+}
+const review = JSON.parse(await readFile(reviewPath, "utf8"));
+if (review.status !== "approved") {
+  console.error(`✗ Submission status is ${review.status}, not approved.`);
+  process.exit(1);
+}
+
 const submission = JSON.parse(await readFile(submissionPath, "utf8"));
 const packFile =
   typeof submission.packFile === "string" && submission.packFile
@@ -63,16 +76,28 @@ if (manifest.license !== submission.licence) {
   console.error("✗ manifest licence does not match submission licence");
   process.exit(1);
 }
+if (review.packId !== manifest.id || review.version !== manifest.version) {
+  console.error("✗ review record does not match the pack id and version");
+  process.exit(1);
+}
 
 const signingKey = createPrivateKey(await readFile(privateKeyPath));
 const publicKey = createPublicKey(signingKey)
   .export({ format: "der", type: "spki" })
   .subarray(-32)
   .toString("base64");
+const keyId = createHash("sha256")
+  .update(Buffer.from(publicKey, "base64"))
+  .digest("hex")
+  .slice(0, 16);
 const catalogPath = join(repoRoot, "catalog", "index.json");
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
 if (catalog.publicKey !== publicKey) {
   console.error("✗ catalog public key does not match the signing key");
+  process.exit(1);
+}
+if (catalog.keyId !== keyId) {
+  console.error("✗ catalog key id does not match the signing key");
   process.exit(1);
 }
 
@@ -121,9 +146,12 @@ const entry = {
   ).toString(),
   sha256,
   signature,
+  keyId,
   trust: "reviewed",
   tags,
   updatedAt: new Date().toISOString(),
+  reviewedAt: review.reviewedAt,
+  reviewedBy: review.reviewer,
 };
 
 const packs = (catalog.packs ?? []).filter((pack) => pack.id !== entry.id);

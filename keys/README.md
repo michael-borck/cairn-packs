@@ -9,14 +9,22 @@
 
 Back up the private key in a password manager or encrypted volume. If it is lost, publish a new public key and treat it as a key rotation; old packs will need re-signing.
 
-Generate a development pair only if you own the catalog:
+## Rotation
 
-```bash
-node - <<'NODE'
-const { generateKeyPairSync } = require('node:crypto');
-const { writeFileSync } = require('node:fs');
-const { privateKey, publicKey } = generateKeyPairSync('ed25519');
-writeFileSync('keys/cairn-packs-private.pem', privateKey.export({ type: 'pkcs8', format: 'pem' }));
-writeFileSync('keys/cairn-packs-public.pem', publicKey.export({ type: 'spki', format: 'pem' }));
-NODE
-```
+1. Generate a new pair:
+
+   ```bash
+   npm run keygen -- --out keys/next
+   ```
+
+2. Add the printed raw public key to `TRUSTED_CATALOG_PUBLIC_KEYS` in the Cairn app and ship an app update. Keep the old key in that list for the transition.
+3. Re-sign official and reviewed packs with the new key:
+
+   ```bash
+   CAIRN_PACKS_PRIVATE_KEY=keys/next/cairn-packs-private.pem npm run build
+   ```
+
+4. Replace `keys/cairn-packs-public.pem` with the new public key. Keep the old public key in the app's trusted list until old clients are gone.
+5. Run `npm run verify`, commit the catalog and artifacts, and deploy.
+
+The catalog stores a short `keyId` fingerprint so the signing key is visible in the artifact metadata. Rotate only with an app release that trusts the new key.

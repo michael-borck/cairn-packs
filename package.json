@@ -8,6 +8,8 @@
     "build": "node scripts/build-packs.mjs",
     "verify": "node scripts/verify-catalog.mjs",
     "validate": "node scripts/validate-submission.mjs",
-    "approve": "node scripts/approve-submission.mjs"
+    "approve": "node scripts/approve-submission.mjs",
+    "review": "node scripts/review-submission.mjs",
+    "keygen": "node scripts/generate-key.mjs"
   }
 }

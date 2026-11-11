@@ -16,4 +16,4 @@ Copy [`../templates/submission.json`](../templates/submission.json), fill it in,
 npm run validate
 ```
 
-Then open a pull request. A merged submission is not live until the maintainer reviews it, approves it, and deploys the catalog.
+Then open a pull request. A merged submission is not live until the maintainer records a review, signs it, and deploys the catalog. See [REVIEWING.md](../REVIEWING.md).
