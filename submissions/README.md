@@ -1,6 +1,6 @@
 # Submissions
 
-No submissions yet.
+`first-commit` is a small worked example of the submission shape. It is not automatically live.
 
 Add one folder per pack:
 
@@ -16,4 +16,4 @@ Copy [`../templates/submission.json`](../templates/submission.json), fill it in,
 npm run validate
 ```
 
-Then open a pull request. A merged submission is not live until the maintainer rebuilds and deploys the catalog.
+Then open a pull request. A merged submission is not live until the maintainer reviews it, approves it, and deploys the catalog.

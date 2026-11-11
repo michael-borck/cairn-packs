@@ -161,6 +161,18 @@ async function main() {
     throw new Error(`Cannot read source directory ${source}: ${error.message}`);
   }
 
+  let preserved = [];
+  try {
+    const existing = JSON.parse(
+      await readFile(join(catalogRoot, "index.json"), "utf8")
+    );
+    preserved = (existing.packs ?? []).filter(
+      (pack) => pack.trust !== "official"
+    );
+  } catch {
+    // The first build has no existing catalog.
+  }
+
   const packs = [];
   for (const entry of entries) {
     if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
@@ -186,6 +198,13 @@ async function main() {
     );
   }
 
+  const allPacks = [
+    ...packs,
+    ...preserved.filter(
+      (pack) => !packs.some((official) => official.id === pack.id)
+    ),
+  ].sort((a, b) => a.title.localeCompare(b.title));
+
   const catalog = {
     format: "cairn-catalog",
     version: 1,
@@ -193,13 +212,13 @@ async function main() {
     publicKey,
     generated: new Date().toISOString(),
     revoked: revocations.revoked,
-    packs,
+    packs: allPacks,
   };
   await writeFile(
     join(catalogRoot, "index.json"),
     JSON.stringify(catalog, null, 2) + "\n"
   );
-  console.log(`Catalog has ${packs.length} pack(s).`);
+  console.log(`Catalog has ${allPacks.length} pack(s).`);
 }
 
 main().catch((error) => {

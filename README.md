@@ -104,7 +104,18 @@ A revocation with no `version` applies to every version of that pack ID. The app
 6. A maintainer reviews licence, provenance, safety, accuracy, and accessibility.
 7. The pack is rebuilt into the catalog and deployed.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [POLICY.md](POLICY.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [POLICY.md](POLICY.md). The `first-commit` submission is a worked example.
+
+## Approving a submission
+
+After review, sign the artifact and add it to the catalog:
+
+```bash
+npm run approve -- first-commit
+npm run verify
+```
+
+The approval script copies the artifact to `packs/`, signs it, and updates `catalog/index.json` and `catalog/packs/<id>.json` with `trust: "reviewed"`. Commit the artifact and catalog together. A later `npm run build` rebuilds official packs and preserves reviewed entries.
 
 ## Trust tiers
 

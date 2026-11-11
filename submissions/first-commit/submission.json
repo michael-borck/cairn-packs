@@ -1,0 +1,15 @@
+{
+  "packId": "first-commit",
+  "title": "Your First Git Commit",
+  "author": "Cairn contributors",
+  "contact": "michael@borck.dev",
+  "licence": "CC-BY-4.0",
+  "licenceConfirmed": true,
+  "version": "0.1.0",
+  "description": "A short, practical introduction to staging and committing changes.",
+  "changes": "Initial sample submission for the Cairn catalog.",
+  "status": "submitted",
+  "trust": "community",
+  "packFile": "pack.learnpack",
+  "cairnValidation": "Cairn validatePack passed with no warnings."
+}
