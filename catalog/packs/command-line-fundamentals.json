@@ -1,0 +1,32 @@
+{
+  "format": "cairn-catalog-pack",
+  "id": "command-line-fundamentals",
+  "title": "Command Line Fundamentals",
+  "version": "0.1.0",
+  "description": "A hands-on introduction to the terminal: navigating the filesystem, reading and searching text, piping commands together, managing files, finding things, and staying safe with permissions and rm.",
+  "author": "Cairn",
+  "licence": "CC-BY-4.0",
+  "level": "beginner",
+  "audience": "adult-self-learner",
+  "estimatedMinutes": 210,
+  "skills": 9,
+  "items": 47,
+  "labs": 8,
+  "url": "https://michael-borck.github.io/cairn-packs/packs/command-line-fundamentals/0.1.0.learnpack",
+  "sha256": "465745908602476870fd355c82dd5a03e7003135fb231678dd5044f605bd5f21",
+  "signature": "JtpAxRv2ebXR7yMPvw9vFcNT7YK569SIexQH5cAi/yjx45rpDmnYOCDFL0dLLk/ebpJsnRLNTYyRUMfk2C1CCw==",
+  "keyId": "5e971c213e4eeb87",
+  "trust": "official",
+  "tags": [
+    "cli",
+    "filesystem",
+    "find",
+    "grep",
+    "permissions",
+    "pipes",
+    "safety",
+    "shell",
+    "text"
+  ],
+  "updatedAt": "2026-11-20T09:42:05.240Z"
+}
